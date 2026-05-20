@@ -1,43 +1,3 @@
-/* Custom cursor — hide default on desktop */
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
-
-.c-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 8px; height: 8px;
-  background: #22e07a;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  margin: -4px 0 0 -4px;
-  transition: opacity .2s;
-  box-shadow: 0 0 10px rgba(34,224,122,0.8);
-}
-.c-ring {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(34,224,122,0.55);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  margin: -18px 0 0 -18px;
-  transition: transform .08s linear, opacity .2s;
-}
-
-/* Hero canvas sits behind all content */
-.hero > * { position: relative; z-index: 1; }
-canvas.hero-canvas {
-  position: absolute !important;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
 :root {
   --bg: #0a0a0a;
   --bg-2: #111111;
@@ -125,7 +85,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Hero */
 .hero {
-  padding: 16px 0 64px;
+  padding: 96px 0 64px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -159,7 +119,7 @@ a { color: inherit; text-decoration: none; }
   padding: 6px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 }
 .hero h1 {
   font-size: clamp(40px, 7vw, 76px);
@@ -379,5 +339,5 @@ footer {
   .quotes { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; }
   section { padding: 72px 0; }
-  .hero { padding: 12px 0 40px; }
+  .hero { padding: 64px 0 40px; }
 }
