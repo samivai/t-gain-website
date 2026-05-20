@@ -125,7 +125,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Hero */
 .hero {
-  padding: 40px 0 64px;
+  padding: 16px 0 64px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -159,7 +159,7 @@ a { color: inherit; text-decoration: none; }
   padding: 6px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 .hero h1 {
   font-size: clamp(40px, 7vw, 76px);
@@ -379,5 +379,5 @@ footer {
   .quotes { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; }
   section { padding: 72px 0; }
-  .hero { padding: 28px 0 40px; }
+  .hero { padding: 12px 0 40px; }
 }
