@@ -1,3 +1,32 @@
+/* Custom cursor — hide default on desktop */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+.c-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: #22e07a;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  margin: -4px 0 0 -4px;
+  transition: opacity .2s;
+  box-shadow: 0 0 10px rgba(34,224,122,0.8);
+}
+.c-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(34,224,122,0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  margin: -18px 0 0 -18px;
+  transition: transform .08s linear, opacity .2s;
+}
+
 :root {
   --bg: #0a0a0a;
   --bg-2: #111111;
