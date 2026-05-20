@@ -283,6 +283,12 @@ section { padding: 96px 0; }
 }
 .store small { display: block; color: var(--muted); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
 .store:hover { border-color: var(--accent); }
+.store-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.store-disabled small { color: var(--accent); }
 
 /* Footer */
 footer {
