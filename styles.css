@@ -442,6 +442,33 @@ footer {
   transform: translateY(0);
 }
 
+/* Text fade-in — staggered, pure opacity (no movement) for headings/paragraphs */
+.text-fade {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .8s cubic-bezier(.25,.46,.45,.94),
+              transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.text-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Within a card, fade child text in sequence after the card reveals */
+.pillar.visible img       { animation: childFade .6s .05s both ease-out; }
+.pillar.visible h3        { animation: childFade .6s .15s both ease-out; }
+.pillar.visible p         { animation: childFade .6s .25s both ease-out; }
+.feature.visible .tag     { animation: childFade .6s .05s both ease-out; }
+.feature.visible h3       { animation: childFade .6s .15s both ease-out; }
+.feature.visible p        { animation: childFade .6s .25s both ease-out; }
+.quote.visible .stars     { animation: childFade .6s .05s both ease-out; }
+.quote.visible p          { animation: childFade .6s .15s both ease-out; }
+.quote.visible .who       { animation: childFade .6s .25s both ease-out; }
+@keyframes childFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* Metric tiles — subtle hover */
 .metric { transition: transform .3s, border-color .25s, background .25s; }
 .metric:hover { transform: translateY(-3px); border-color: rgba(34,224,122,0.4); }

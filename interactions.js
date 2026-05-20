@@ -17,16 +17,10 @@
   /* ── Scroll reveal (only below-the-fold sections) ─────── */
   if (!reduceMotion) {
     const revealSelectors = [
-      '#pillars .section-head',
       '.pillar',
-      '#features .section-head',
       '.feature',
-      '#loved .section-head',
       '.quote',
-      '#faq .section-head',
       '.faq details',
-      '.final h2',
-      '.final p',
       '.stores',
       '.metric'
     ];
@@ -34,6 +28,21 @@
       document.querySelectorAll(sel).forEach((el, i) => {
         el.classList.add('reveal');
         el.style.transitionDelay = `${Math.min(i * 70, 350)}ms`;
+      });
+    });
+
+    // Pure-text fade-in for section headings and paragraphs (children stagger)
+    const textFadeSelectors = [
+      '#pillars .section-head h2',  '#pillars .section-head p',
+      '#features .section-head h2', '#features .section-head p',
+      '#loved .section-head h2',    '#loved .section-head p',
+      '#faq .section-head h2',
+      '.final h2',                  '.final p'
+    ];
+    textFadeSelectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach((el, i) => {
+        el.classList.add('text-fade');
+        el.style.transitionDelay = `${i * 90}ms`;
       });
     });
 
@@ -46,7 +55,7 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal, .text-fade').forEach(el => obs.observe(el));
   }
 
   /* ── Animated metric counters ─────────────────────────── */
