@@ -85,7 +85,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Hero */
 .hero {
-  padding: 96px 0 64px;
+  padding: 40px 0 64px;
   text-align: center;
   position: relative;
   overflow: hidden;
