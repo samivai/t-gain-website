@@ -21,6 +21,40 @@ body {
   color: var(--text);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient background glow blobs — fixed behind everything */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(120px);
+  will-change: transform;
+}
+body::before {
+  width: 620px; height: 620px;
+  top: -180px; left: -160px;
+  background: radial-gradient(circle, rgba(34, 224, 122, 0.32), transparent 70%);
+  animation: glowDriftA 18s ease-in-out infinite alternate;
+}
+body::after {
+  width: 720px; height: 720px;
+  bottom: -220px; right: -180px;
+  background: radial-gradient(circle, rgba(34, 224, 122, 0.22), transparent 70%);
+  animation: glowDriftB 22s ease-in-out infinite alternate;
+}
+@keyframes glowDriftA {
+  0%   { transform: translate(0,   0)   scale(1); }
+  100% { transform: translate(120px, 60px) scale(1.15); }
+}
+@keyframes glowDriftB {
+  0%   { transform: translate(0,    0)    scale(1); }
+  100% { transform: translate(-100px, -80px) scale(1.1); }
 }
 
 a { color: inherit; text-decoration: none; }
@@ -162,7 +196,26 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Section */
-section { padding: 96px 0; }
+section { padding: 96px 0; position: relative; }
+
+/* Per-section ambient glow accent */
+#features::before,
+#loved::before,
+#download::before {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(34, 224, 122, 0.18), transparent 70%);
+}
+#features::before { top: -100px; right: -120px; }
+#loved::before    { top: 40%; left: -160px; }
+#download::before { top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; }
+section .container { position: relative; z-index: 1; }
 .section-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
 .section-head h2 {
   font-size: clamp(30px, 4.5vw, 48px);
