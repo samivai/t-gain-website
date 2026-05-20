@@ -196,8 +196,7 @@
 
   const revealTargets = [
     '.section-head', '.pillar', '.feature', '.quote',
-    '.metric', '.faq details', '.hero-mockup', '.eyebrow',
-    '.hero h1', '.hero .lead', '.hero-cta', '.final h2',
+    '.metric', '.faq details', '.hero-mockup', '.final h2',
     '.final p', '.stores'
   ];
 
