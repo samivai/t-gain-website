@@ -341,3 +341,117 @@ footer {
   section { padding: 72px 0; }
   .hero { padding: 64px 0 40px; }
 }
+
+/* ====================================================
+   Interactive polish — animations & micro-interactions
+   ==================================================== */
+
+/* Animated gradient on hero headline accent */
+.hero h1 em {
+  background: linear-gradient(120deg, #22e07a 0%, #9af0c1 35%, #22e07a 70%, #9af0c1 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+/* Floating gradient blob behind hero */
+.hero::before {
+  animation: float 9s ease-in-out infinite alternate;
+}
+@keyframes float {
+  0%   { transform: translate(-8px, 0)   scale(1);    opacity: 0.85; }
+  100% { transform: translate(8px,  18px) scale(1.05); opacity: 1; }
+}
+
+/* Hero mockup gentle floating */
+.hero-mockup img {
+  animation: bob 6s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes bob {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Buttons — hover lift + glow */
+.btn { transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, background .2s, border-color .2s; }
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(34, 224, 122, 0.45);
+}
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+.btn-ghost:hover { transform: translateY(-2px); background: rgba(34,224,122,0.06); }
+
+/* Pillar / feature / quote — lift, glow border, tilt-friendly */
+.pillar, .feature, .quote {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .35s, background .25s;
+  will-change: transform;
+}
+.pillar:hover, .feature:hover, .quote:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34, 224, 122, 0.55);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(34, 224, 122, 0.18);
+}
+.pillar img {
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), filter .3s;
+}
+.pillar:hover img {
+  transform: scale(1.08) rotate(-3deg);
+  filter: grayscale(0) brightness(1.1) drop-shadow(0 6px 14px rgba(34,224,122,0.4));
+}
+
+/* Store cards */
+.store { transition: transform .25s, border-color .25s, background .25s; }
+.store:not(.store-disabled):hover { transform: translateY(-2px); background: #1c1c1c; }
+
+/* Nav becomes denser on scroll (toggled by JS) */
+.nav { transition: background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.nav.scrolled {
+  background: rgba(10, 10, 10, 0.92);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* FAQ smooth open */
+.faq details[open] p {
+  animation: faqSlide .35s ease forwards;
+}
+@keyframes faqSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.faq summary::after { transition: transform .25s ease, color .2s; }
+.faq details[open] summary::after { transform: rotate(180deg); color: var(--accent); }
+.faq summary:hover { color: var(--accent); }
+
+/* Scroll-reveal — used ONLY on below-the-fold elements via JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.25,.46,.45,.94),
+              transform .7s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Metric tiles — subtle hover */
+.metric { transition: transform .3s, border-color .25s, background .25s; }
+.metric:hover { transform: translateY(-3px); border-color: rgba(34,224,122,0.4); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
